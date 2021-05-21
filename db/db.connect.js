@@ -4,7 +4,8 @@ const mongoose = require("mongoose")
 // TODO: use async await instead of then/catch
 function initializeDBConnection() {
   // Connecting to DB
-  mongoose.connect("mongodb+srv://harshD:deshpande100@neog-cluster.hbcvp.mongodb.net/inventory", {
+  const mySecret = process.env['dbConnectionString']
+  mongoose.connect(mySecret, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
@@ -13,5 +14,3 @@ function initializeDBConnection() {
 }
 
 module.exports = { initializeDBConnection }
-
-"mongodb+srv://harshD:<password>@neog-cluster.hbcvp.mongodb.net/test"
